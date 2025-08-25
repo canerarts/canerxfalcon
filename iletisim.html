@@ -44,6 +44,51 @@
     .navbar-right a img:hover { transform: scale(1.1); }
     .navbar-left, .navbar-right { display: flex; align-items: center; }
 
+    /* Hamburger icon */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .hamburger div {
+      width: 30px;
+      height: 3px;
+      background-color: #333;
+      margin: 5px 0;
+      transition: all 0.3s;
+    }
+
+    /* Mobile responsive */
+    @media(max-width: 768px) {
+      .navbar {
+        padding: 15px 20px;
+        height: auto;
+      }
+      .navbar-logo {
+        position: static;
+        transform: none;
+        margin: 10px 0;
+      }
+      .navbar-left, .navbar-right {
+        flex-direction: column;
+        width: 100%;
+        display: none; /* default kapalı */
+      }
+      .navbar-left a {
+        margin: 10px 0;
+        font-size: 20px;
+      }
+      .navbar-left.active, .navbar-right.active {
+        display: flex;
+      }
+      .hamburger {
+        display: flex;
+        position: absolute;
+        right: 20px;
+        top: 30px;
+      }
+    }
+
     .contact-container {
       max-width: 600px;
       background-color: rgba(255,255,255,0.95);
@@ -87,27 +132,6 @@
       font-weight: bold;
       box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
     }
-
-    /* Responsive */
-    @media(max-width: 768px) {
-      .navbar {
-        flex-direction: column;
-        height: auto;
-        padding: 15px 20px;
-      }
-      .navbar-logo {
-        position: static;
-        transform: none;
-        margin: 10px 0;
-      }
-      .navbar-left, .navbar-right {
-        justify-content: center;
-        margin: 5px 0;
-        flex-wrap: wrap;
-      }
-      .navbar-left a { margin: 5px 10px; font-size: 20px; }
-      .contact-container { margin: 50px 20px; padding: 30px 20px; }
-    }
   </style>
 </head>
 <body>
@@ -125,6 +149,11 @@
       <a href="https://instagram.com/canerakdag3/" target="_blank">
         <img src="instagram.png" alt="Instagram">
       </a>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
   </nav>
 
@@ -148,6 +177,7 @@
   </footer>
 
   <script>
+    // Form doğrulama
     const form = document.getElementById('contactForm');
     form.addEventListener('submit', function(e){
       const phone = document.getElementById('phone').value;
@@ -157,6 +187,16 @@
         return;
       }
       alert("Mesajınız gönderiliyor!");
+    });
+
+    // Hamburger menü toggle
+    const hamburger = document.getElementById('hamburger');
+    const navbarLeft = document.querySelector('.navbar-left');
+    const navbarRight = document.querySelector('.navbar-right');
+
+    hamburger.addEventListener('click', () => {
+      navbarLeft.classList.toggle('active');
+      navbarRight.classList.toggle('active');
     });
   </script>
 
