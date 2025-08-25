@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>İletişim</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('arkaplan.png'); 
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: white;
+      padding: 20px 60px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: 100px;
+      flex-wrap: wrap;
+    }
+    .navbar-left a {
+      margin-right: 30px;
+      text-decoration: none;
+      color: #333;
+      font-size: 22px;
+      font-weight: bold;
+      font-family: "Courier New", Courier, monospace;
+      transition: color 0.3s;
+    }
+    .navbar-left a:hover { color: #0077ff; }
+    .navbar-logo { position: absolute; left: 50%; transform: translateX(-50%); cursor: pointer; }
+    .navbar-logo img { height: 80px; }
+    .navbar-right a img { height: 40px; transition: transform 0.3s; }
+    .navbar-right a img:hover { transform: scale(1.1); }
+    .navbar-left, .navbar-right { display: flex; align-items: center; }
+
+    .contact-container {
+      max-width: 600px;
+      background-color: rgba(255,255,255,0.95);
+      margin: 100px auto;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    .contact-container h2 { text-align: center; margin-bottom: 30px; font-size: 28px; font-weight: bold; color: #333; }
+    .contact-container form { display: flex; flex-direction: column; }
+    .contact-container input, .contact-container textarea {
+      margin-bottom: 20px;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .contact-container textarea { resize: vertical; min-height: 100px; }
+    .contact-container label { font-weight: bold; margin-bottom: 5px; }
+    .contact-container button {
+      padding: 15px;
+      background-color: #0077ff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .contact-container button:hover { background-color: #005bb5; }
+
+    footer {
+      background-color: white;
+      color: black;
+      text-align: center;
+      padding: 15px 0;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      font-weight: bold;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+    }
+
+    /* Responsive */
+    @media(max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 15px 20px;
+      }
+      .navbar-logo {
+        position: static;
+        transform: none;
+        margin: 10px 0;
+      }
+      .navbar-left, .navbar-right {
+        justify-content: center;
+        margin: 5px 0;
+        flex-wrap: wrap;
+      }
+      .navbar-left a { margin: 5px 10px; font-size: 20px; }
+      .contact-container { margin: 50px 20px; padding: 30px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="navbar-left">
+      <a href="index.html">Anasayfa</a>
+      <a href="#">Hakkında</a>
+      <a href="#">İletişim</a>
+    </div>
+    <div class="navbar-logo" onclick="window.location.href='index.html'">
+      <img src="logo.png" alt="Logo">
+    </div>
+    <div class="navbar-right">
+      <a href="https://instagram.com/canerakdag3/" target="_blank">
+        <img src="instagram.png" alt="Instagram">
+      </a>
+    </div>
+  </nav>
+
+  <div class="contact-container">
+    <h2>İletişim</h2>
+    <form id="contactForm" method="POST" action="https://formspree.io/f/mnnnlzeo">
+      <label for="name">Ad Soyad</label>
+      <input type="text" id="name" name="name" placeholder="Adınız ve Soyadınız" required>
+      <label for="phone">Telefon</label>
+      <input type="tel" id="phone" name="phone" placeholder="5XX XXX XX XX" pattern="[0-9]{10,11}" required>
+      <label for="email">E-posta</label>
+      <input type="email" id="email" name="email" placeholder="mail@ornek.com" required>
+      <label for="message">Açıklama</label>
+      <textarea id="message" name="message" placeholder="Mesajınızı yazın..." required></textarea>
+      <button type="submit">Gönder</button>
+    </form>
+  </div>
+
+  <footer>
+    &copy; 2025 CANER X FALCON. Tüm hakları saklıdır.
+  </footer>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', function(e){
+      const phone = document.getElementById('phone').value;
+      if(!/^\d{10,11}$/.test(phone)) {
+        e.preventDefault();
+        alert("Lütfen geçerli bir telefon numarası girin.");
+        return;
+      }
+      alert("Mesajınız gönderiliyor!");
+    });
+  </script>
+
+</body>
+</html>

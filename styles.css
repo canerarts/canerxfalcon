@@ -1,0 +1,117 @@
+/* Genel body ve font */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-image: url('arkaplan.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 40px 60px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  flex-wrap: wrap;
+}
+
+.navbar-left a {
+  margin-right: 30px;
+  text-decoration: none;
+  color: #333;
+  font-size: 22px;
+  font-weight: bold;
+  font-family: "Courier New", Courier, monospace;
+  transition: color 0.3s;
+}
+
+.navbar-left a:hover { color: #0077ff; }
+
+.navbar-logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+}
+
+.navbar-logo img { height: 80px; }
+
+.navbar-right a img {
+  height: 40px;
+  transition: transform 0.3s;
+}
+
+.navbar-right a img:hover { transform: scale(1.1); }
+
+.navbar-left, .navbar-right { display: flex; align-items: center; }
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  margin: 4px 0;
+}
+
+/* Main */
+.main {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  padding: 20px 60px;
+  box-sizing: border-box;
+}
+
+.left-video {
+  width: 300px;
+  height: auto;
+  border-radius: 10px;
+  margin-right: 40px;
+  flex-shrink: 0;
+}
+
+.content { color: white; flex: 1; }
+
+/* Footer */
+footer {
+  background-color: white;
+  color: black;
+  text-align: center;
+  padding: 15px 0;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+/* Responsive */
+@media(max-width:768px){
+  .navbar { flex-wrap: wrap; padding: 15px 20px; }
+  .hamburger { display: flex; }
+  .navbar-left, .navbar-right { display: none; width: 100%; flex-direction: column; }
+  .navbar-left a, .navbar-right a { margin: 10px 0; font-size: 20px; }
+  .navbar-left.active, .navbar-right.active { display: flex; }
+  .navbar-logo { position: static; transform: none; margin: 10px 0; }
+  .main { flex-direction: column; padding: 20px; }
+  .left-video { margin: 0 0 20px 0; width: 100%; max-width: 300px; }
+  footer { position: relative; bottom: auto; width: 100%; }
+}

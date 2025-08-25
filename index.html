@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anasayfa</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="hamburger" id="hamburger">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <div class="navbar-left" id="navbar-left">
+    <a href="#anasayfa">Anasayfa</a>
+    <a href="#hakkinda">Hakkında</a>
+    <a href="iletisim.html">İletişim</a>
+  </div>
+
+  <div class="navbar-logo" onclick="window.location.href='#anasayfa'">
+    <img src="logo.png" alt="Logo">
+  </div>
+
+  <div class="navbar-right" id="navbar-right">
+    <a href="https://instagram.com/canerakdag3/" target="_blank">
+      <img src="instagram.png" alt="Instagram">
+    </a>
+  </div>
+</nav>
+
+<div id="anasayfa" class="main">
+  <video class="left-video" src="video.mp4" autoplay muted loop></video>
+  <div class="content">
+    <h1></h1>
+    <p></p>
+  </div>
+</div>
+
+<footer>
+  &copy; 2025 CANER X FALCON. Tüm hakları saklıdır.
+</footer>
+
+<script>
+const hamburger = document.getElementById('hamburger');
+const navbarLeft = document.getElementById('navbar-left');
+const navbarRight = document.getElementById('navbar-right');
+
+hamburger.addEventListener('click', () => {
+  navbarLeft.classList.toggle('active');
+  navbarRight.classList.toggle('active');
+});
+</script>
+
+</body>
+</html>
