@@ -49,6 +49,7 @@
       display: none;
       flex-direction: column;
       cursor: pointer;
+      z-index: 1100;
     }
     .hamburger div {
       width: 30px;
@@ -69,23 +70,20 @@
         transform: none;
         margin: 10px 0;
       }
+      .hamburger { display: flex; }
       .navbar-left, .navbar-right {
         flex-direction: column;
         width: 100%;
-        display: none; /* default kapalı */
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
       }
-      .navbar-left a {
+      .navbar-left a, .navbar-right a {
         margin: 10px 0;
         font-size: 20px;
       }
       .navbar-left.active, .navbar-right.active {
-        display: flex;
-      }
-      .hamburger {
-        display: flex;
-        position: absolute;
-        right: 20px;
-        top: 30px;
+        max-height: 500px; /* yeterli yükseklik */
       }
     }
 
@@ -197,8 +195,9 @@
     hamburger.addEventListener('click', () => {
       navbarLeft.classList.toggle('active');
       navbarRight.classList.toggle('active');
+      // Hamburger animasyonu
+      hamburger.classList.toggle('open');
     });
   </script>
-
 </body>
 </html>
